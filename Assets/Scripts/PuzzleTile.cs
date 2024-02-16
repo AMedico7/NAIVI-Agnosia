@@ -9,26 +9,29 @@ public class PuzzleTile : MonoBehaviour
     private Text tileText;
     private Image tileImage;
 
-    private void Awake()
-    {
-        tileText = GetComponentInChildren<Text>();
-        tileImage = GetComponent<Image>();
-    }
 
     public void SetId(int newId)
     {
         id = newId;
+        tileText = GetComponentInChildren<Text>();
+        tileImage = GetComponentInChildren<Image>();
 
-        Text tileText = GetComponentInChildren<Text>();
         if (tileText != null)
         {
             tileText.text = id.ToString();
+        }
+
+
+        // Check if it is the last tile
+        if (newId == Mathf.Pow(SlidePuzzleController.Instance.gridSize, 2))
+        {
+            tileImage.enabled = false;
         }
     }
 
     void Start()
     {
-        Text tileText = GetComponentInChildren<Text>();
+        tileText = GetComponentInChildren<Text>();
         if (tileText != null)
         {
             tileText.text = id.ToString();

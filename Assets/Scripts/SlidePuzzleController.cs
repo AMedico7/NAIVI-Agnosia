@@ -29,7 +29,7 @@ public class SlidePuzzleController : MonoBehaviour
         }
     }
 
-    private int gridSize = 3;
+    public int gridSize = 3;
     private List<PuzzleTile> tiles;
 
     private void Start()
