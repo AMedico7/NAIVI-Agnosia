@@ -18,5 +18,10 @@ public class MusicSchoolController : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Menu");
     }
+
+    public void GoToMap()
+    {
+        SceneManager.LoadSceneAsync("Map");
+    }
     
 }
