@@ -6,6 +6,7 @@ using System.Linq;
 public class SlidePuzzleController : MonoBehaviour
 {
     public GridLayoutGroup gridLayoutGroup;
+    public Image puzzleImage;
 
     // Singleton instance
     private static SlidePuzzleController _instance;
@@ -35,6 +36,7 @@ public class SlidePuzzleController : MonoBehaviour
     private void Start()
     {
 
+        puzzleImage.gameObject.SetActive(false);
         tiles = new List<PuzzleTile>();
         for (int i = 0; i < gridLayoutGroup.transform.childCount; i++)
         {
@@ -85,7 +87,9 @@ public class SlidePuzzleController : MonoBehaviour
 
     public void TileClicked(int clickedId){
         
-        //PrintAdjacentTiles(clickedId);
+        if (IsPuzzleSolved()){
+            return;
+        }
 
         if (clickedId == 9)
         {
@@ -108,7 +112,9 @@ public class SlidePuzzleController : MonoBehaviour
 
             if (IsPuzzleSolved())
             {
+                tiles[tiles.Count - 1].tileImage.enabled = true;
                 Debug.Log("PUZZLE SOLVED");
+                puzzleImage.gameObject.SetActive(true);
             }
         }
     }

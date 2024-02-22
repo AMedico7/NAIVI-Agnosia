@@ -7,7 +7,7 @@ public class PuzzleTile : MonoBehaviour
 {
     public int id;
     private Text tileText;
-    private Image tileImage;
+    public Image tileImage;
 
 
     public void SetId(int newId)
