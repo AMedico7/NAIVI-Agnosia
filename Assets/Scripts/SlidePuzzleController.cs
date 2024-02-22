@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
+
 
 public class SlidePuzzleController : MonoBehaviour
 {
@@ -183,5 +185,10 @@ public class SlidePuzzleController : MonoBehaviour
     private void PrintSiblingIndexes()
     {
         Debug.Log("Sibling Ids: " + string.Join(", ", tiles.Select(tiles => tiles.transform.GetSiblingIndex())));
+    }
+
+    public void GoBack()
+    {
+        SceneManager.LoadSceneAsync("Map");
     }
 }

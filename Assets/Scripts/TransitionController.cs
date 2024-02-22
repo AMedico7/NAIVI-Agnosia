@@ -7,17 +7,27 @@ using UnityEngine.SceneManagement;
 public class TransitionController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int difficulty;
+    public int destination;
     void Awake()
     {
-        difficulty = StateNameController.destinationLevel;
+        destination = StateNameController.destinationLevel;
+
+        
     }
 
     void Update()
     {
+       
+
         if (Input.GetKeyDown(KeyCode.S))
         {
-            SceneManager.LoadScene("SlidePuzzle");
+
+            if (destination == 1){
+                Debug.Log("MUSIC");
+                SceneManager.LoadScene("SlidePuzzle");
+            }
+
+            Debug.Log("NOT A VALID DESTINATION");
         }
     }
 }

@@ -1787,6 +1787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridLayoutGroup: {fileID: 1734972826}
+  puzzleImage: {fileID: 0}
   gridSize: 3
 --- !u!4 &1186234425
 Transform:
@@ -2188,8 +2189,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: CloseMap
+      - m_Target: {fileID: 1186234424}
+        m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2218,7 +2219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c7de5ad5856a3cf41895646d33a49bc9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac263f77bc6b3074fa6c9eea5c028518, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
