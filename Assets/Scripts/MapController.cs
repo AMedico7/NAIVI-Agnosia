@@ -38,7 +38,7 @@ public class MapController : MonoBehaviour
 
     public void GoTo(int levelId)   {
         StateNameController.destinationLevel = levelId;
-        SceneManager.LoadScene("Transition");
+        SceneManager.LoadScene("RythmGame");
     }
 
     public void CloseMap()
