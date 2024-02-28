@@ -9,6 +9,7 @@ public class SlidePuzzleController : MonoBehaviour
 {
     public GridLayoutGroup gridLayoutGroup;
     public Image puzzleImage;
+    public PuzzleTile puzzleTilePrefab;
 
     // Singleton instance
     private static SlidePuzzleController _instance;
@@ -39,14 +40,47 @@ public class SlidePuzzleController : MonoBehaviour
     {
 
         puzzleImage.gameObject.SetActive(false);
+
+
+    
+    // Define sizes based on gridsize
+    float spacing;
+    float cellSize;
+
+
+    switch (gridSize)
+    {
+        case 3:
+            spacing = 10f;
+            cellSize = 280f;
+            break;
+        case 4:
+            spacing = 10f;
+            cellSize = 205f;
+            break;
+        case 5:
+            spacing = 10f;
+            cellSize = 160f;
+            break;
+
+        default:
+            spacing = 10f;
+            cellSize = 280f;
+            break;
+    }
+
+    gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
+    gridLayoutGroup.spacing = new Vector2(spacing, spacing);
+
+        
         tiles = new List<PuzzleTile>();
-        for (int i = 0; i < gridLayoutGroup.transform.childCount; i++)
+
+        for (int i = 0; i < gridSize * gridSize; i++)
         {
-
-            PuzzleTile child = gridLayoutGroup.transform.GetChild(i).GetComponent<PuzzleTile>();
+            PuzzleTile child = Instantiate(puzzleTilePrefab, gridLayoutGroup.transform);
+            child.transform.SetParent(gridLayoutGroup.transform, false);
             tiles.Add(child);
-
-            child.SetId(i+1);
+            child.SetId(i + 1, cellSize);
         }
 
         ShuffleList(tiles);
@@ -70,8 +104,25 @@ public class SlidePuzzleController : MonoBehaviour
 
         // TODO: FIND SHUFFLING ALOGRITHM THAT DOES NOT PRODUCE UNSOLVABLE STATES
         // FOR NOW IT IS HARDCODED
+        int[] order;
 
-        int[] order = {1,8,2,9,4,3,7,6,5};
+        switch (gridSize)
+        {
+            case 3:
+                order = new int[] {1, 8, 2, 9, 4, 3, 7, 6, 5};
+                break;
+            case 4:
+                order = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 13, 14, 15, 12};
+                break;
+            case 5:
+                order = new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,24};
+                break;
+            default:
+                order = new int[] {1, 8, 2, 9, 4, 3, 7, 6, 5};
+                break;
+        }
+
+
         T[] tempArray = new T[list.Count];
 
         for (int i=0; i < list.Count; i++)
@@ -93,7 +144,7 @@ public class SlidePuzzleController : MonoBehaviour
             return;
         }
 
-        if (clickedId == 9)
+        if (clickedId == gridSize*gridSize)
         {
             return;
         }
@@ -103,7 +154,7 @@ public class SlidePuzzleController : MonoBehaviour
 
 
         int clickedIndex = tiles.IndexOf(clickedTile);
-        int emptyIndex = tiles.FindIndex(tile => tile.id == 9);
+        int emptyIndex = tiles.FindIndex(tile => tile.id == gridSize*gridSize);
 
 
     
