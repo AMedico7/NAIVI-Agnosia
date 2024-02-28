@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (score >= 300){
+        if (score >= 10000){
             StateNameController.GoToDestination();
         }
     }
