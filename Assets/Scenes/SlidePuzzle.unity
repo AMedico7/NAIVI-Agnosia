@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -730,7 +730,7 @@ MonoBehaviour:
   puzzleImage: {fileID: 820121275}
   puzzleTilePrefab: {fileID: 108332334349715397, guid: 9a75a4c070f08bd4783cd2cee84e98d5,
     type: 3}
-  gridSize: 4
+  gridSize: 5
 --- !u!4 &1186234425
 Transform:
   m_ObjectHideFlags: 0
