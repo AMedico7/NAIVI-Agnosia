@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
     public BeatScroller beatScroller;
 
+
+    public int difficulty = 1;
+    public GameObject backgroundObject;
+    public Material[] backgroundMaterials;
+
     public int score;
 
     public static GameManager instance;
@@ -17,6 +22,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;   
+
+        // Set the appropiate background material
+
+        Renderer quadRenderer = backgroundObject.GetComponent<Renderer>();
+
+        if (quadRenderer != null)
+        {
+            quadRenderer.material = backgroundMaterials[Mathf.Min(difficulty-1, backgroundMaterials.Length-1)];
+        }
     }
 
     // Update is called once per frame
@@ -28,6 +42,8 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 beatScroller.StartPlaying();
+
+                backgroundObject.GetComponent<ScrollingBg>().speed = 0.1f;
 
                 music.Play();
             }
