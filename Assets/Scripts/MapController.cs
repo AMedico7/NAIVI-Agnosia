@@ -8,6 +8,8 @@ public class MapController : MonoBehaviour
 {
     // Level Buttons
     public Button[] levels;
+    public GameObject drP;
+    private Vector3 offset;
     // Unlocked level
 
     private void Awake()
@@ -33,12 +35,43 @@ public class MapController : MonoBehaviour
         {
             levels[i].gameObject.SetActive(true);
         }
+
     }
 
 
+    public void Update() {
+        if (StateNameController.currentPosition >= 0 && StateNameController.currentPosition < levels.Length)
+        {
+            // Get the position of the level associated with currentPos
+            Vector3 levelPosition = levels[StateNameController.currentPosition].transform.position;
+
+            // Set the position of the DrP GameObject to the level's position
+            drP.transform.position = levelPosition + new Vector3(-3.5f, 35.0f, 0.0f);
+
+            Debug.Log("Level Position: " + levelPosition);
+            Debug.Log("DrP Position: " + drP.transform.position);
+
+        }
+
+
+
+
+
+
+
+        // Change position
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            StateNameController.currentPosition = Mathf.Min(StateNameController.currentPosition + 1, levels.Length - 1);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            StateNameController.currentPosition = Mathf.Max(StateNameController.currentPosition - 1, 0);
+        }
+    }
+
     public void GoTo(int levelId)   {
-        StateNameController.destinationLevel = levelId;
-        SceneManager.LoadScene("RythmGame");
+        StateNameController.GoToLevel(levelId);
     }
 
     public void CloseMap()

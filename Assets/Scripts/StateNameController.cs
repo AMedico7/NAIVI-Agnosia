@@ -5,17 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class StateNameController : MonoBehaviour
 {
-    public static int unlockedLevel;
+    public static int unlockedLevel = 0;
+    public static int currentPosition = 0;
     public static int destinationLevel;
     
     public static void GoToDestination()
     {
 
-        if (destinationLevel == 1){
+        if (destinationLevel == 0){
             SceneManager.LoadScene("SlidePuzzle");
         } 
         else {
             SceneManager.LoadScene("Map");
         }
+    }
+
+    public static void GoToLevel(int levelId)
+    {
+        destinationLevel = levelId;
+        currentPosition = levelId;
+        SceneManager.LoadScene("RythmGame");
     }
 }
