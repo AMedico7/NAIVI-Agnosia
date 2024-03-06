@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             if(Input.anyKeyDown)
             {
                 startPlaying = true;
-                beatScroller.StartPlaying();
+                beatScroller.StartPlaying(difficulty);
 
                 backgroundObject.GetComponent<ScrollingBg>().speed = 0.1f;
                 spriteAnimation.ChangeAnimationSpeed(drPspeed);
@@ -62,9 +62,21 @@ public class GameManager : MonoBehaviour
         }
 
 
+
+        // Win condition
         if (score >= 50000){
             StateNameController.GoToDestination();
         }
+
+        
+
+        // Debug
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ChangeBackgroundMaterial();
+        }
+        
     }
 
 
@@ -77,5 +89,28 @@ public class GameManager : MonoBehaviour
     public void NoteMissed()
     {
         Debug.Log("MISS");
+    }
+
+
+    private void SetBackgroundMaterial()
+    {
+        Renderer quadRenderer = backgroundObject.GetComponent<Renderer>();
+
+        if (quadRenderer != null)
+        {
+            quadRenderer.material = backgroundMaterials[Mathf.Min(difficulty-1, backgroundMaterials.Length-1)];
+        }
+    }
+
+    private void ChangeBackgroundMaterial()
+    {
+        // Change background material (cycling through materials)
+        difficulty++;
+        if (difficulty > backgroundMaterials.Length)
+        {
+            difficulty = 1;
+        }
+
+        SetBackgroundMaterial();
     }
 }

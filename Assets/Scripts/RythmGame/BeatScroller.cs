@@ -10,6 +10,7 @@ public class BeatScroller : MonoBehaviour
     public GameObject[] arrowPrefabs;
     public Transform[] arrowSpawnPoints;
     public float spawnInterval;
+    private int spawns;
 
     public static BeatScroller instance;
 
@@ -23,10 +24,11 @@ public class BeatScroller : MonoBehaviour
     }
 
 
-    public void StartPlaying()
+    public void StartPlaying(int difficulty)
     {
         playing = true;
         StartCoroutine(SpawnArrowsCoroutine());
+        spawns = difficulty;
     }
 
     IEnumerator SpawnArrowsCoroutine()
@@ -34,22 +36,40 @@ public class BeatScroller : MonoBehaviour
         while (playing)
         {
 
-            int index = Random.Range(0, 4);
+            List<int> usedIndexes = new List<int>();
 
-            GameObject arrowPrefab = arrowPrefabs[index];
-            Transform spawnPoint = arrowSpawnPoints[index];
+            for (int i=0; i<spawns; i++)
+            {
+                int index = GetUniqueRandomIndex(usedIndexes);
 
-            GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, spawnPoint.rotation);
+                GameObject arrowPrefab = arrowPrefabs[index];
+                Transform spawnPoint = arrowSpawnPoints[index];
 
-            Coroutine moveCoroutine = StartCoroutine(MoveArrowCoroutine(arrow));
+                GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, spawnPoint.rotation);
 
-            NoteObject noteObject = arrow.GetComponent<NoteObject>();
-            noteObject.SetMoveCoroutine(moveCoroutine);
+                Coroutine moveCoroutine = StartCoroutine(MoveArrowCoroutine(arrow));
 
-            yield return new WaitForSeconds(spawnInterval);
+                NoteObject noteObject = arrow.GetComponent<NoteObject>();
+                noteObject.SetMoveCoroutine(moveCoroutine);
+
+                yield return new WaitForSeconds(spawnInterval);
+            }
         }
     }
 
+
+    int GetUniqueRandomIndex(List<int> usedIndexes)
+    {
+        int index;
+
+        // Keep generating a random index until it is unique
+        do
+        {
+            index = Random.Range(0, 4);
+        } while (usedIndexes.Contains(index));
+
+        return index;
+    }
 
     IEnumerator MoveArrowCoroutine(GameObject arrow)
     {
