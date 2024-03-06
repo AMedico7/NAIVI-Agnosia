@@ -60,7 +60,8 @@ public class BeatScroller : MonoBehaviour
             }
 
 
-            int beatsToWait = Random.Range(1, 3);
+            int beatsToWait = Random.value > 0.66f ? 1 : 2;
+
             yield return new WaitForSeconds(beatsToWait*spawnInterval);
         }
     }
