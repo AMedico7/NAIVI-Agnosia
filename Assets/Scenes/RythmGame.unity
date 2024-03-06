@@ -828,7 +828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1e84533cc2ff54b8e5a0d88feab2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 126
+  beatTempo: 0
+  spawnInterval: 0
   playing: 0
   arrowPrefabs:
   - {fileID: 6352113328992743233, guid: 0da8f8a1dfb49e84395b14eb32c2ad03, type: 3}
@@ -840,7 +841,6 @@ MonoBehaviour:
   - {fileID: 2116898762}
   - {fileID: 54784653}
   - {fileID: 1736362534}
-  spawnInterval: 1
 --- !u!4 &639393259
 Transform:
   m_ObjectHideFlags: 0
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 1662874095}
-  startPlaying: 0
+  beatTempo: 126.4
   beatScroller: {fileID: 639393258}
   difficulty: 2
   backgroundObject: {fileID: 1090939072}
@@ -1067,7 +1067,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 572dc727544a8224ea000f8b7eb1ec81, type: 2}
   - {fileID: 2100000, guid: 9199f9bed3206eb4eb1764149edb1d62, type: 2}
   drP: {fileID: 1704826259}
-  score: 0
 --- !u!4 &1288166436
 Transform:
   m_ObjectHideFlags: 0

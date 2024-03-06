@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     public AudioSource music;
-    public bool startPlaying;
+    public float beatTempo;
+    private bool startPlaying;
     public BeatScroller beatScroller;
 
 
@@ -15,13 +17,15 @@ public class GameManager : MonoBehaviour
     public Material[] backgroundMaterials;
 
 
-
+    
 
     private float drPspeed;
     public GameObject drP;
     private PeriodicSpriteAnimation spriteAnimation;
 
-    public int score;
+
+
+    private int score;
 
     public static GameManager instance;
 
@@ -42,6 +46,9 @@ public class GameManager : MonoBehaviour
         spriteAnimation = drP.GetComponent<PeriodicSpriteAnimation>();
 
         drPspeed = 0.4f;
+
+        beatScroller.beatTempo = this.beatTempo / 60f;
+        beatScroller.spawnInterval = (60f / this.beatTempo);
     }
 
     // Update is called once per frame
@@ -82,13 +89,13 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("DRPSPEED"+drPspeed);
+        // HIT NOTE
         score += 100;
     }
 
     public void NoteMissed()
     {
-        Debug.Log("MISS");
+        // MISS NOTE
     }
 
 

@@ -5,11 +5,12 @@ using UnityEngine;
 public class BeatScroller : MonoBehaviour
 {
     public float beatTempo;
+    public float spawnInterval;
+
     public bool playing;
 
     public GameObject[] arrowPrefabs;
     public Transform[] arrowSpawnPoints;
-    public float spawnInterval;
     private int spawns;
 
     public static BeatScroller instance;
@@ -19,8 +20,6 @@ public class BeatScroller : MonoBehaviour
     void Start()
     {
         instance = this;
-        beatTempo = beatTempo / 60f;
-        spawnInterval = beatTempo;
     }
 
 
@@ -28,8 +27,7 @@ public class BeatScroller : MonoBehaviour
     {
         playing = true;
 
-        // Change to 3 if 3 is contempled (it is quite hard) spawns = Mathf.Max(Mathf.Min(difficulty,3), 1);
-        spawns = Mathf.Max(Mathf.Min(difficulty,2), 1);
+        spawns = Mathf.Max(Mathf.Min(difficulty,3), 1);
 
 
         StartCoroutine(SpawnArrowsCoroutine());
@@ -40,8 +38,10 @@ public class BeatScroller : MonoBehaviour
         while (playing)
         {
             List<int> usedIndexes = new List<int>();
+            
+            int arrowsToSpawn = Random.Range(1, spawns + 1);
 
-            for (int i=0; i<spawns; i++)
+            for (int i=0; i<arrowsToSpawn; i++)
             {
                 int index = GetUniqueRandomIndex(usedIndexes);
                 usedIndexes.Add(index);
@@ -59,7 +59,9 @@ public class BeatScroller : MonoBehaviour
                 
             }
 
-            yield return new WaitForSeconds(spawnInterval);
+
+            int beatsToWait = Random.Range(1, 2);
+            yield return new WaitForSeconds(beatsToWait*spawnInterval);
         }
     }
 
