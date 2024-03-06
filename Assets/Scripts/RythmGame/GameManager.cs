@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundObject;
     public Material[] backgroundMaterials;
 
+
+
+
+    private float drPspeed;
+    public GameObject drP;
+    private PeriodicSpriteAnimation spriteAnimation;
+
     public int score;
 
     public static GameManager instance;
@@ -31,6 +38,10 @@ public class GameManager : MonoBehaviour
         {
             quadRenderer.material = backgroundMaterials[Mathf.Min(difficulty-1, backgroundMaterials.Length-1)];
         }
+
+        spriteAnimation = drP.GetComponent<PeriodicSpriteAnimation>();
+
+        drPspeed = 0.4f;
     }
 
     // Update is called once per frame
@@ -44,13 +55,14 @@ public class GameManager : MonoBehaviour
                 beatScroller.StartPlaying();
 
                 backgroundObject.GetComponent<ScrollingBg>().speed = 0.1f;
+                spriteAnimation.ChangeAnimationSpeed(drPspeed);
 
                 music.Play();
             }
         }
 
 
-        if (score >= 500){
+        if (score >= 50000){
             StateNameController.GoToDestination();
         }
     }
@@ -58,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("HIT");
+        Debug.Log("DRPSPEED"+drPspeed);
         score += 100;
     }
 

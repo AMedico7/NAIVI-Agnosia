@@ -84,19 +84,6 @@ public class PuzzleTile : MonoBehaviour
             tileText.text = id.ToString();
             tileText.gameObject.SetActive(false);
         }
-
-
-        void Start()
-    {
-        tileText = GetComponentInChildren<Text>();
-        if (tileText != null)
-        {
-            tileText.text = id.ToString();
-
-            // Set the text not active by default
-            tileText.gameObject.SetActive(false);
-        }
-    }
     }
 
     public void OnTileClicked()
