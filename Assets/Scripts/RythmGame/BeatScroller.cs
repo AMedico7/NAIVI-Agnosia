@@ -27,20 +27,24 @@ public class BeatScroller : MonoBehaviour
     public void StartPlaying(int difficulty)
     {
         playing = true;
+
+        // Change to 3 if 3 is contempled (it is quite hard) spawns = Mathf.Max(Mathf.Min(difficulty,3), 1);
+        spawns = Mathf.Max(Mathf.Min(difficulty,2), 1);
+
+
         StartCoroutine(SpawnArrowsCoroutine());
-        spawns = difficulty;
     }
 
     IEnumerator SpawnArrowsCoroutine()
     {
         while (playing)
         {
-
             List<int> usedIndexes = new List<int>();
 
             for (int i=0; i<spawns; i++)
             {
                 int index = GetUniqueRandomIndex(usedIndexes);
+                usedIndexes.Add(index);
 
                 GameObject arrowPrefab = arrowPrefabs[index];
                 Transform spawnPoint = arrowSpawnPoints[index];
@@ -52,8 +56,10 @@ public class BeatScroller : MonoBehaviour
                 NoteObject noteObject = arrow.GetComponent<NoteObject>();
                 noteObject.SetMoveCoroutine(moveCoroutine);
 
-                yield return new WaitForSeconds(spawnInterval);
+                
             }
+
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 
@@ -62,7 +68,6 @@ public class BeatScroller : MonoBehaviour
     {
         int index;
 
-        // Keep generating a random index until it is unique
         do
         {
             index = Random.Range(0, 4);
