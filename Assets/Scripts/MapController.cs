@@ -47,10 +47,6 @@ public class MapController : MonoBehaviour
 
             // Set the position of the DrP GameObject to the level's position
             drP.transform.position = levelPosition + new Vector3(-3.5f, 35.0f, 0.0f);
-
-            Debug.Log("Level Position: " + levelPosition);
-            Debug.Log("DrP Position: " + drP.transform.position);
-
         }
 
 

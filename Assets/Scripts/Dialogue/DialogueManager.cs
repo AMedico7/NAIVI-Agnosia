@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
-    public int location = 0;
     public GameObject dialogueBox;
     public GameObject background;
     private Dialogue dialogue;
@@ -23,6 +22,9 @@ public class DialogueManager : MonoBehaviour
         // Set dialogue and dialogue lines
         dialogue = dialogueBox.GetComponent<Dialogue>();
         backgroundImage = background.GetComponent<Image>();
+
+        backgroundImage.sprite = backgrounds[StateNameController.location];
+        SetDialogueLines(StateNameController.lines);
     }
 
     public void SetDialogueLines(string[] newLines)
