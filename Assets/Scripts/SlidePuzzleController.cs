@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class SlidePuzzleController : MonoBehaviour
 {
     public GridLayoutGroup gridLayoutGroup;
-    public Image puzzleImage;
+    public Sprite[] puzzleSprites;
+    public int puzzleNumber = 0;
     public PuzzleTile puzzleTilePrefab;
 
     // Singleton instance
@@ -39,33 +40,30 @@ public class SlidePuzzleController : MonoBehaviour
     private void Start()
     {
 
-        puzzleImage.gameObject.SetActive(false);
-
-
     
     // Define sizes based on gridsize
-    float spacing;
-    float cellSize;
+    int spacing;
+    int cellSize;
 
 
     switch (gridSize)
     {
         case 3:
-            spacing = 10f;
-            cellSize = 280f;
+            spacing = 10;
+            cellSize = 280;
             break;
         case 4:
-            spacing = 10f;
-            cellSize = 205f;
+            spacing = 10;
+            cellSize = 205;
             break;
         case 5:
-            spacing = 10f;
-            cellSize = 160f;
+            spacing = 10;
+            cellSize = 160;
             break;
 
         default:
-            spacing = 10f;
-            cellSize = 280f;
+            spacing = 10;
+            cellSize = 280;
             break;
     }
 
@@ -80,7 +78,7 @@ public class SlidePuzzleController : MonoBehaviour
             PuzzleTile child = Instantiate(puzzleTilePrefab, gridLayoutGroup.transform);
             child.transform.SetParent(gridLayoutGroup.transform, false);
             tiles.Add(child);
-            child.SetId(i + 1, cellSize);
+            child.SetId(i + 1, cellSize, puzzleSprites[puzzleNumber], gridSize);
         }
 
         ShuffleList(tiles);
@@ -167,7 +165,6 @@ public class SlidePuzzleController : MonoBehaviour
             {
                 tiles[tiles.Count - 1].tileImage.enabled = true;
                 Debug.Log("PUZZLE SOLVED");
-                puzzleImage.gameObject.SetActive(true);
             }
         }
     }
