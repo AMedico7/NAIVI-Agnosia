@@ -1,0 +1,38 @@
+Dialogue before Location 0 - casa
+{
+    "Dr. P: ¡Hola!", "Señora P: Buenos días, cariño.", 
+    "Dr. P: Hoy va a ser un día estupendo.", 
+    "Señora P: Recuerda que tienes cita con el doctor Sacks.", 
+    "Dr. P: Cierto, mejor que vaya con tiempo, no vaya a ser que tenga algún percance."
+}
+
+Dialogue after Location 0 - casa
+{
+    "Dr. P: Ya falta menos para llegar a la clínica. ¡Casi me pierdo!"
+}
+
+Dialogue before Location 1 - clínica
+{
+    "Dr. P: El doctor Sacks es un hombre muy inteligente, me encanta charlar con él.", 
+    "Dr. Sacks: Buenas Dr. P, adelante.", 
+    "Dr. P: Buenos días doctor Sacks."
+}
+
+Dialogue after Location 1 - clínica
+{
+    "Dr. P: Un placer como siempre doctor Sacks.", 
+    "Dr. Sacks: El placer es mío, cuídese.", 
+    "Dr. P: Ahora rumbo a la escuela."
+}
+
+Dialogue before Location 2 - escuela
+{
+    "Dr. P: La escuela está a la vuelta de la esquina, o eso creo yo..."
+}
+
+Dialogue after Location 2 - escuela
+{
+    "Alumno: ¡Adiós Dr. P nos vemos el jueves!", 
+    "Dr. P: ¡Adiós chicos!", 
+    "Dr. P: Da gusto dar clase a alumnos así, aunque cada año me cuesta más quedarme con sus caras."
+}

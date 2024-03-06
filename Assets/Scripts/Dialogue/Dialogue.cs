@@ -36,6 +36,7 @@ public class Dialogue : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
+        DialogueManager.instance.SetCharacterImage(lines[index]);
         StartCoroutine(TypeLine());
     }
 
@@ -54,11 +55,14 @@ public class Dialogue : MonoBehaviour
         {
             index++;
             textComponent.text = string.Empty;
+            DialogueManager.instance.SetCharacterImage(lines[index]);
             StartCoroutine(TypeLine());
         } else 
         {
+            DialogueManager.instance.SetCharacterImage("");
             gameObject.SetActive(false);
             // Go to the next step
+            DialogueManager.instance.inDialogue = false;
         }
     }
 }
