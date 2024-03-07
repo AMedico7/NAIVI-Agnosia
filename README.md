@@ -4,7 +4,7 @@
 Idealmente con una resolucion de 1920x1080 o un aspect ratio de 16:9
 
 ## Ejecución:
-Ejecutar el archivo Agnosia.exe de la carpeta de la build
+Ejecutar el archivo Agnosia.exe de la carpeta de la build o de la carpeta que se crea al descomprimir el zip de la release.
 
 
 > **AVISO:** Leer [DevTools](#dev-tools) abajo para ahorrar tiempo de gameplay
