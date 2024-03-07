@@ -239,7 +239,8 @@ public class StateNameController : MonoBehaviour
                 SceneManager.LoadScene("LinesPuzzle");
                 break;
             case 1:
-                SceneManager.LoadScene("LinesPuzzle");
+                SceneManager.LoadScene("MemoryPuzzle");
+                
                 break;
             case 2:
                 SceneManager.LoadScene("SlidePuzzle");
