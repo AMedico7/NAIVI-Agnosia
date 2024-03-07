@@ -983,7 +983,7 @@ Transform:
   m_LocalScale: {x: 18.0525, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1090939077
 MonoBehaviour:
@@ -1058,9 +1058,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 1662874095}
-  beatTempo: 126
+  beatTempo: 116
   beatScroller: {fileID: 639393258}
-  difficulty: 1
   backgroundObject: {fileID: 1090939072}
   backgroundMaterials:
   - {fileID: 2100000, guid: d473ede992ae7574595d69d7b7e94214, type: 2}
@@ -1079,7 +1078,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1662874094
 GameObject:
@@ -1092,7 +1091,7 @@ GameObject:
   - component: {fileID: 1662874096}
   - component: {fileID: 1662874095}
   m_Layer: 0
-  m_Name: GamesPlusJames - Rhythm Tutorial
+  m_Name: Rondo-Alla-Truca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1108,11 +1107,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e3903f052f6e1c84385cd598b244e788, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c699e844c786b794f92afb523a17a11d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1206,7 +1205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665987925
 GameObject:
