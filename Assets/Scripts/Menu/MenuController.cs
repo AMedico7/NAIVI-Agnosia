@@ -7,14 +7,12 @@ public class MenuController : MonoBehaviour
 {
     public void New()
     {
-        StateNameController.unlockedLevel = 0;
-        SceneManager.LoadSceneAsync("Map");
+        StateNameController.NewGame();
     }
 
     public void Continue()
     {
-        StateNameController.unlockedLevel = 0;
-        SceneManager.LoadSceneAsync("Map");
+        StateNameController.ContinueGame();
     }
 
     public void Quit()

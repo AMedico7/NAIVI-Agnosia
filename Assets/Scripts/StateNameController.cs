@@ -50,11 +50,6 @@ public class StateNameController : MonoBehaviour
     public static int currentPosition = -1;
     public static int destinationLevel = 0;
 
-    
-    public static string previousScene = "";
-    public static string currentScene = "";
-
-
 
     // Dialogue
     public static int location = 0;
@@ -266,5 +261,20 @@ public class StateNameController : MonoBehaviour
     public static void GoToEnding()
     {
         SceneManager.LoadScene("Ending");
+    }
+
+
+    public static void NewGame()
+    {
+        step = 0;
+        unlockedLevel = 0;
+        currentPosition = -1;
+        destinationLevel = 0;
+        SceneManager.LoadScene("Map");
+    }
+
+    public static void ContinueGame()
+    {
+        Next();
     }
 }
