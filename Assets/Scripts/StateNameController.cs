@@ -60,7 +60,8 @@ public class StateNameController : MonoBehaviour
 
     private static string[] dialogueBeforeEnding = {
         "En \"El mundo como voluntad y representación\", Schopenhauer dice que la música es <<Voluntad Pura>>.",
-        "Cómo le habria fascinado el Dr. P, un hombre que había perdido completamente el mundo como representación, pero que lo preserva totalmente como música o voluntad.",
+        "Cómo le habria fascinado el Dr. P, un hombre que había perdido completamente el mundo como representación...",
+        "... pero que lo preserva totalmente como música o voluntad.",
         "Pues a pesar del avance gradual de su enfermedad, el Dr. P sigue enseñando música y viviendola."
     };
 
