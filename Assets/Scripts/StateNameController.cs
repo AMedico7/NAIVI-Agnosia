@@ -10,7 +10,7 @@ public class StateNameController : MonoBehaviour
         "Dr. P: ¡Hola!", 
         "Señora P: Buenos días, cariño.", 
         "Dr. P: Hoy va a ser un día estupendo.", 
-        "Dr. P: Mi día a día es como un rompecabezas, me pregunto que imagen esconde detrás."
+        "Dr. P: Mi día a día es como un rompecabezas."
     };
 
     private static string[] dialogueAfterLocation0 = {
@@ -21,16 +21,28 @@ public class StateNameController : MonoBehaviour
 
     private static string[] dialogueBeforeLocation1 = {
         "Dr. P: Ya falta menos para llegar a la clínica. ¡Casi me pierdo!",
-        "Dr. P: El doctor Sacks es un hombre muy inteligente, me encanta charlar con él.", 
         "Dr. Sacks: Buenas Dr. P, adelante.", 
-        "Dr. P: Buenos días doctor Sacks.",
-        "Dr. P: Espero que hoy pueda seguir todas las preguntas de Sacks, intentaré conectar todas las ideas."
+        "Dr. Sacks: ¿Y que le pasa a usted?",
+        "Dr. P: A mí me parece que nada, pero todos me dicen que me pasa algo raro en la vista.",
+        "Dr. Sacks: Pero usted no nota ningún problema en la vista",
+        "Dr. P: No, directamente no, pero a veces cometo errores",
+        "Tras una breve charla el Dr. Sacks determina que las formas abstractas no plantean problemas para el Dr. P",
+        "El Dr. Sacks decide mostrarle un libro de caricaturas",
+        "Dr. P, pensando: \"Espero que hoy pueda superar la prueba de Sacks\""
     };
 
     private static string[] dialogueAfterLocation1 = {
-        "Dr. P: Un placer como siempre doctor Sacks.", 
+        "El Dr. P se dispone a irse de la clínica",
+        "Dr. Sacks: ¿Quiere que le ayude?",
+        "Dr. P: ¿Ayudarme a que? ¿Ayudar a quién?",
+        "Dr. Sacks: Ayudarle a usted a ponerse el zapato",
+        "Dr. P: Ah sí, el zapato - dice señalando su propio pie",
+        "Dr. Sacks: No, eso no es su zapato, su zapato está ahí.",
+        "Dr. P: ¡Ah! Creí que era el pie.",
+        "Dr. Sacks, pensando: \"Si este es uno de sus <<extraños>> errores es el más extraño que he visto en mi vida\"",
+        "Dr. P: Un placer, doctor Sacks.", 
         "Dr. Sacks: El placer es mío, cuídese.", 
-        "Dr. P: Ahora rumbo a la escuela.",
+        "Dr. P: Ahora rumbo a la escuela de música.",
         "Dr. P: Espero que la combinación de flechas y música me guie igual de bien que antes."
     };
 
@@ -47,6 +59,9 @@ public class StateNameController : MonoBehaviour
     };
 
     private static string[] dialogueBeforeEnding = {
+        "En \"El mundo como voluntad y representación\", Schopenhauer dice que la música es <<Voluntad Pura>>.",
+        "Cómo le habria fascinado el Dr. P, un hombre que había perdido completamente el mundo como representación, pero que lo preserva totalmente como música o voluntad.",
+        "Pues a pesar del avance gradual de su enfermedad, el Dr. P sigue enseñando música y viviendola."
     };
 
     public static int step = 0;
@@ -171,7 +186,7 @@ public class StateNameController : MonoBehaviour
                 else if (step==1)
                 {
                     step++;
-                    GoToDialogue(Location.CLINIC, dialogueBeforeLocation2);
+                    GoToDialogue(Location.MUSIC_SCHOOL, dialogueBeforeLocation2);
                 }
                 else
                 {
