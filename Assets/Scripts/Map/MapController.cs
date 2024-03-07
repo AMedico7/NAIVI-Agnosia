@@ -25,15 +25,18 @@ public class MapController : MonoBehaviour
         }
 
         // Set done unlocked levels to interactable
-        for (int i = 0; i < unlockedLevel; i++)
+        for (int i = 0; i <= unlockedLevel; i++)
         {
             levels[i].interactable = true;
         }
 
         // Set unlocked levels and next level visible
-        for (int i = 0; i <= unlockedLevel; i++)
+        for (int i = 0; i <= unlockedLevel+1; i++)
         {
-            levels[i].gameObject.SetActive(true);
+            if (levels.Length >= i+1)
+            {
+                levels[i].gameObject.SetActive(true);
+            }
         }
 
     }
@@ -49,12 +52,6 @@ public class MapController : MonoBehaviour
             drP.transform.position = levelPosition + new Vector3(-3.5f, 35.0f, 0.0f);
         }
 
-
-
-
-
-
-
         // Change position
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -64,10 +61,19 @@ public class MapController : MonoBehaviour
         {
             StateNameController.currentPosition = Mathf.Max(StateNameController.currentPosition - 1, 0);
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                levels[i].interactable = true;
+                levels[i].gameObject.SetActive(true);
+            }
+        }
     }
 
     public void GoTo(int levelId)   {
-        StateNameController.GoToLevel(levelId);
+        StateNameController.Next();
     }
 
     public void CloseMap()

@@ -137,7 +137,7 @@ public class LinesPuzzleController : MonoBehaviour
             } 
             else 
             {
-                // WIN THE LEVEL
+                StateNameController.Next();
             }
         }
     }

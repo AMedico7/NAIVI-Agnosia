@@ -41,9 +41,21 @@ public class StateNameController : MonoBehaviour
     };
 
 
+    public static int step = 0;
+    
     public static int unlockedLevel = 0;
-    public static int currentPosition = 0;
-    public static int destinationLevel;
+    public static int currentPosition = -1;
+    public static int destinationLevel = 0;
+
+    
+    public static string previousScene = "";
+    public static string currentScene = "";
+
+
+
+    // Dialogue
+    public static int location = 0;
+    public static string[] lines;
 
     public enum Location
     {
@@ -52,26 +64,91 @@ public class StateNameController : MonoBehaviour
         MUSIC_SCHOOL
     }
 
-    public static int location = 0;
-    public static string[] lines;
-    
-    public static void GoToDestination()
-    {
 
-        if (destinationLevel == 0){
-            SceneManager.LoadScene("SlidePuzzle");
-        } 
-        else {
-            SceneManager.LoadScene("Map");
+
+
+    public static void Next()
+    {
+        // Hasn't entered first level
+        if (currentPosition == -1)
+        {
+            destinationLevel = 0;
+
+            // Before dialogue
+            if (step == 0) 
+            {
+                step++;
+                GoToDialogue(Location.HOUSE, dialogueBeforeLocation0);
+            }
+            // After dialogue
+            else if (step == 1)
+            {
+                currentPosition = 0;
+                step = 0;
+                GoToPuzzle(currentPosition);
+            }
+
         }
+        else if (currentPosition == 0)
+        {
+            // Go to location puzzle
+            if (destinationLevel == 0)
+            {
+                // Finish level 0, dialogue after level 0
+                if (step == 0)
+                {
+                    step++;
+                    GoToDialogue(Location.HOUSE, dialogueAfterLocation0);
+                }
+                // Finish dialogue, unlock next level and go to map
+                else
+                {
+                    step=0;
+                    unlockedLevel=1;
+                    destinationLevel=1;
+                    GoToMap();
+                }
+            }
+            // Going to next puzzle
+            else
+            {
+                if (step==0)
+                {
+                    step++;
+                    TransitionLevel(destinationLevel);
+                }
+                else if (step==1)
+                {
+                    step++;
+                    GoToDialogue(Location.CLINIC, dialogueBeforeLocation1);
+                }
+                else
+                {
+                    currentPosition = 1;
+                    step = 0;
+                    GoToPuzzle(currentPosition);
+                }
+            }
+
+            
+
+        }
+        else if (currentPosition == 1)
+        {
+
+        }
+        else if (currentPosition == 2)
+        {
+
+
+        }
+
     }
 
-    public static void GoToLevel(int levelId)
+    public static void Fail()
     {
-        GoToDialogue(Location.MUSIC_SCHOOL, dialogueAfterLocation2);
-        //destinationLevel = levelId;
-        //currentPosition = levelId;
-        //SceneManager.LoadScene("RythmGame");
+
+
     }
 
 
@@ -84,12 +161,34 @@ public class StateNameController : MonoBehaviour
         SceneManager.LoadScene("Dialogue");
     }
 
-
-    public static void ExitDialogue()
+    public static void GoToPuzzle(int puzzleLocation)
     {
-        Debug.Log("EXITING DIALOGUE");
-        SceneManager.LoadScene("Map");
+        switch (puzzleLocation)
+        {
+            case 0:
+                SceneManager.LoadScene("LinesPuzzle");
+                break;
+            case 1:
+                SceneManager.LoadScene("LinesPuzzle");
+                break;
+            case 2:
+                SceneManager.LoadScene("SlidePuzzle");
+                break;
+            default:
+                break;
+        }
     }
 
+
+    public static void TransitionLevel(int level)
+    {
+        SceneManager.LoadScene("RythmGame");
+
+    }
+
+    public static void GoToMap()
+    {
+        SceneManager.LoadScene("Map");
+    }
     
 }

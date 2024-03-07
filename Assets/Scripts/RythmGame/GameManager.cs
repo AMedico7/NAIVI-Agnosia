@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
 
 
         // Win condition
-        if (score >= 50000){
-            StateNameController.GoToDestination();
+        if (score >= 800){
+            StateNameController.Next();
         }
 
         
