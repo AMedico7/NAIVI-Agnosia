@@ -15,14 +15,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Dialogue.unity
     guid: 8b9449d13a5a44441a3e35ca0604ea40
   - enabled: 1
-    path: Assets/Scenes/SlidePuzzle.unity
-    guid: ebc6ebf5fc94ebc46972719a3c4deb6f
-  - enabled: 1
     path: Assets/Scenes/RythmGame.unity
     guid: a7efac3f0da73e7439004acd29203987
   - enabled: 1
     path: Assets/Scenes/LinesPuzzle.unity
     guid: fe9e8a55b2e876d419115b00df2f2757
+  - enabled: 1
+    path: Assets/Scenes/MemoryPuzzle.unity
+    guid: 8d0856fa890bd4d499e2c9b8309fbf67
+  - enabled: 1
+    path: Assets/Scenes/SlidePuzzle.unity
+    guid: ebc6ebf5fc94ebc46972719a3c4deb6f
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: 3e18b339bf283374f881cc8dfc33af2b

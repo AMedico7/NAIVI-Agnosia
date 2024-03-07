@@ -26,6 +26,7 @@ public class RythmGameManager : MonoBehaviour
 
 
     private int score;
+    public int scoreNeeded;
 
     public static RythmGameManager instance;
 
@@ -34,6 +35,7 @@ public class RythmGameManager : MonoBehaviour
         instance = this;   
         
         difficulty = StateNameController.rythmGameDifficulty;
+        scoreNeeded = 3000 * difficulty;
 
 
         // Set the appropiate background material
@@ -72,11 +74,17 @@ public class RythmGameManager : MonoBehaviour
 
 
         // Win condition
-        if (score >= 800){
+        if (score >= scoreNeeded){
+            StateNameController.Next();
+        }
+        
+
+        // Automatically win
+        if (Input.GetKeyDown(KeyCode.W))
+        {
             StateNameController.Next();
         }
 
-        
 
         // Debug
 

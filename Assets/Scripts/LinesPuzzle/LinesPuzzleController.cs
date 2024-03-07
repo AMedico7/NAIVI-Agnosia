@@ -43,6 +43,16 @@ public class LinesPuzzleController : MonoBehaviour
         InstantiateElements(rightLayout, rightSprites, rightItems);
     }
 
+
+    void Update()
+    {
+        // Automatically win
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StateNameController.Next();
+        }
+    }
+
     void InstantiateElements(GridLayoutGroup layoutGroup, Sprite[] sprites, List<GameObject> itemList)
     {
 

@@ -46,6 +46,12 @@ public class DialogueManager : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && !inDialogue){
             StateNameController.Next();
         }
+
+        // Automatically win
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StateNameController.Next();
+        }
     }
 
     public void SetDialogueLines(string[] newLines)

@@ -33,6 +33,15 @@ public class MemoryGameController : MonoBehaviour
         gameGuesses = gamePuzzles.Count / 2;
     }
 
+    void Update()
+    {
+        // Automatically win
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StateNameController.Next();
+        }
+    }
+
     void GetButtons(){
         GameObject[] objects = GameObject.FindGameObjectsWithTag("PuzzleButton");
 

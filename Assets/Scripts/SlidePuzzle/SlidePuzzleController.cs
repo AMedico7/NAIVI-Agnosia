@@ -112,6 +112,13 @@ public class SlidePuzzleController : MonoBehaviour
             }
        }
 
+
+       // Automatically win
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StateNameController.Next();
+        }
+
        
     }
 
@@ -128,6 +135,7 @@ public class SlidePuzzleController : MonoBehaviour
                 order = new int[] {1, 8, 2, 9, 4, 3, 7, 6, 5};
                 break;
             case 4:
+                // Fix order
                 order = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 13, 14, 15, 12};
                 break;
             case 5:
