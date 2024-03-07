@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     public void Update() {
     
         if(Input.GetMouseButtonDown(0) && !inDialogue){
-            StateNameController.Next();
+            StateNameController.ExitDialogue();
         }
     }
 
