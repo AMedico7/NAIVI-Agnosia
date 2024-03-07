@@ -51,25 +51,6 @@ public class MapController : MonoBehaviour
             // Set the position of the DrP GameObject to the level's position
             drP.transform.position = levelPosition + new Vector3(-3.5f, 35.0f, 0.0f);
         }
-
-        // Change position
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StateNameController.currentPosition = Mathf.Min(StateNameController.currentPosition + 1, levels.Length - 1);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StateNameController.currentPosition = Mathf.Max(StateNameController.currentPosition - 1, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                levels[i].interactable = true;
-                levels[i].gameObject.SetActive(true);
-            }
-        }
     }
 
     public void GoTo(int levelId)   {
