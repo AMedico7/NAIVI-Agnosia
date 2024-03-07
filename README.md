@@ -1,5 +1,8 @@
 # NAIVI-Agnosia
- 
+
+[Latest release](https://github.com/AMedico7/NAIVI-Agnosia/releases/tag/v1.0.1)
+[GDD](https://github.com/AMedico7/NAIVI-Agnosia/blob/main/GDD.pdf)
+
 ## Resolucion
 Idealmente con una resolucion de 1920x1080 o un aspect ratio de 16:9
 
