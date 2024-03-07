@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class RythmGameManager : MonoBehaviour
@@ -25,8 +26,10 @@ public class RythmGameManager : MonoBehaviour
 
 
 
-    private int score;
+    public int score;
     public int scoreNeeded;
+
+    public Slider progressBar;
 
     public static RythmGameManager instance;
 
@@ -52,6 +55,10 @@ public class RythmGameManager : MonoBehaviour
 
         beatScroller.beatTempo = this.beatTempo / 60f;
         beatScroller.spawnInterval = (60f / this.beatTempo);
+
+
+        progressBar.minValue = 0;
+        progressBar.maxValue = scoreNeeded;
     }
 
     // Update is called once per frame
@@ -71,6 +78,8 @@ public class RythmGameManager : MonoBehaviour
             }
         }
 
+        // Progress bar
+        progressBar.value = score;
 
 
         // Win condition
@@ -92,6 +101,12 @@ public class RythmGameManager : MonoBehaviour
         {
             ChangeBackgroundMaterial();
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            backgroundObject.GetComponent<ScrollingBg>().SetSpeed(backgroundObject.GetComponent<ScrollingBg>().speed * -1);
+            drP.transform.Rotate(new Vector3(0f, 180f, 0f));
+        }
         
     }
 
@@ -100,11 +115,20 @@ public class RythmGameManager : MonoBehaviour
     {
         // HIT NOTE
         score += 100;
+        backgroundObject.GetComponent<ScrollingBg>().SetSpeed(0.1f);
+        drP.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        
     }
 
     public void NoteMissed()
     {
         // MISS NOTE
+        score -= 50;
+        score = Mathf.Max(score, 0);
+
+        backgroundObject.GetComponent<ScrollingBg>().SetSpeed(-0.1f);
+        drP.transform.eulerAngles = new Vector3(0f, 180f, 0f);
+
     }
 
 
