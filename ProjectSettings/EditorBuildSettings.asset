@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LinesPuzzle.unity
     guid: fe9e8a55b2e876d419115b00df2f2757
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 3e18b339bf283374f881cc8dfc33af2b
   m_configObjects: {}

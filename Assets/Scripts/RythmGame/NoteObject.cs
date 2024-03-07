@@ -28,7 +28,7 @@ public class NoteObject : MonoBehaviour
             if(canBePressed)
             {
                 hasBeenHit = true;
-                GameManager.instance.NoteHit();
+                RythmGameManager.instance.NoteHit();
                 SelfDestroy();
             }
         }
@@ -47,7 +47,7 @@ public class NoteObject : MonoBehaviour
         if(other.tag == "Activator" && !hasBeenHit)
         {
             canBePressed = false;
-            GameManager.instance.NoteMissed();
+            RythmGameManager.instance.NoteMissed();
             SelfDestroy();
         }
     }

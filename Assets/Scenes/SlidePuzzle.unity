@@ -652,12 +652,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridLayoutGroup: {fileID: 1734972826}
   puzzleSprites:
-  - {fileID: 21300000, guid: 9f0a0b5b2c509b34cbf4d1caac9424c3, type: 3}
   - {fileID: 21300000, guid: 1c0b6444243da4d43ab292e9c5ad0813, type: 3}
-  puzzleNumber: 1
+  - {fileID: 21300000, guid: 9f0a0b5b2c509b34cbf4d1caac9424c3, type: 3}
+  puzzleNumber: 0
   puzzleTilePrefab: {fileID: 108332334349715397, guid: 9a75a4c070f08bd4783cd2cee84e98d5,
     type: 3}
-  gridSize: 5
+  gridSize: 3
 --- !u!4 &1186234425
 Transform:
   m_ObjectHideFlags: 0

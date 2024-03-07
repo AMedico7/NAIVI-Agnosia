@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class RythmGameManager : MonoBehaviour
 {
 
     public AudioSource music;
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public BeatScroller beatScroller;
 
 
-    public int difficulty = 1;
+    private int difficulty;
     public GameObject backgroundObject;
     public Material[] backgroundMaterials;
 
@@ -27,15 +27,16 @@ public class GameManager : MonoBehaviour
 
     private int score;
 
-    public static GameManager instance;
+    public static RythmGameManager instance;
 
-    // Start is called before the first frame update
-    void Start()
+       void Start()
     {
         instance = this;   
+        
+        difficulty = StateNameController.rythmGameDifficulty;
+
 
         // Set the appropiate background material
-
         Renderer quadRenderer = backgroundObject.GetComponent<Renderer>();
 
         if (quadRenderer != null)

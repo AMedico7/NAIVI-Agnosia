@@ -1054,13 +1054,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1288166434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ce1c01d21893e4b818ce88a2b53360, type: 3}
+  m_Script: {fileID: 11500000, guid: c635a91725446ff4e829958bbc167ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 1662874095}
-  beatTempo: 126.4
+  beatTempo: 126
   beatScroller: {fileID: 639393258}
-  difficulty: 2
+  difficulty: 1
   backgroundObject: {fileID: 1090939072}
   backgroundMaterials:
   - {fileID: 2100000, guid: d473ede992ae7574595d69d7b7e94214, type: 2}

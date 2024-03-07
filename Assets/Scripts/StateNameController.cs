@@ -40,6 +40,9 @@ public class StateNameController : MonoBehaviour
         "Dr. P: Da gusto dar clase a alumnos así, aunque cada año me cuesta más quedarme con sus caras."
     };
 
+    private static string[] dialogueBeforeEnding = {
+        ""
+    };
 
     public static int step = 0;
     
@@ -66,9 +69,15 @@ public class StateNameController : MonoBehaviour
 
 
 
+    // Rythm Variables
+    public static int rythmGameDifficulty = 1;
+
+
 
     public static void Next()
     {
+        // Debug.Log("ENTERED NEXT WITH CURRENT POSITION " + currentPosition + " DESTINATION LEVEL " + destinationLevel + " CURRENT LOCATION " + currentPosition +  " STEP " + step);
+        
         // Hasn't entered first level
         if (currentPosition == -1)
         {
@@ -135,24 +144,85 @@ public class StateNameController : MonoBehaviour
         }
         else if (currentPosition == 1)
         {
+            if (destinationLevel == 1)
+            {
+                // Finish level 1, dialogue after level 1
+                if (step == 0)
+                {
+                    step++;
+                    GoToDialogue(Location.CLINIC, dialogueAfterLocation1);
+                }
+                // Finish dialogue, unlock next level and go to map
+                else 
+                {
+                    step=0;
+                    unlockedLevel=2;
+                    destinationLevel=2;
+                    GoToMap();
+                }
+            }
+            else
+            {
+                if (step==0)
+                {
+                    step++;
+                    TransitionLevel(destinationLevel);
+                }
+                else if (step==1)
+                {
+                    step++;
+                    GoToDialogue(Location.CLINIC, dialogueBeforeLocation2);
+                }
+                else
+                {
+                    currentPosition = 2;
+                    step = 0;
+                    GoToPuzzle(currentPosition);
+                }
+            }
 
         }
         else if (currentPosition == 2)
         {
+            if (destinationLevel == 2)
+            {
+                // Finished level 2, dialogue after level 2
+                if (step == 0)
+                {
+                    step++;
+                    GoToDialogue(Location.MUSIC_SCHOOL, dialogueAfterLocation2);
+                }
+                else
+                {
+                    step=0;
+                    unlockedLevel=3;
+                    destinationLevel=3;
+                    GoToMap();
+                }
+            }
+            else 
+            {
+                if (step==0)
+                {
+                    step++;
+                    TransitionLevel(destinationLevel);
+                }
+                else if (step==1)
+                {
+                    step++;
+                    GoToDialogue(Location.HOUSE, dialogueBeforeEnding);
+                }
+                else 
+                {
+                    GoToEnding();
+                }
+            }
 
 
         }
 
     }
 
-    public static void Fail()
-    {
-
-
-    }
-
-
-    // Example usage: GoToDialogue(Location.HOUSE, new string[] {"Dr. P. : Hello!", "Dr. Sacks: Hi!"});
     public static void GoToDialogue(Location dialogueLocation, string[] dialogueLines)
     {
 
@@ -180,10 +250,10 @@ public class StateNameController : MonoBehaviour
     }
 
 
-    public static void TransitionLevel(int level)
+    public static void TransitionLevel(int destinationLevel)
     {
+        rythmGameDifficulty = destinationLevel;
         SceneManager.LoadScene("RythmGame");
-
     }
 
     public static void GoToMap()
@@ -191,4 +261,9 @@ public class StateNameController : MonoBehaviour
         SceneManager.LoadScene("Map");
     }
     
+
+    public static void GoToEnding()
+    {
+        SceneManager.LoadScene("Ending");
+    }
 }

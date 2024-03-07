@@ -12,6 +12,8 @@ public class SlidePuzzleController : MonoBehaviour
     public int puzzleNumber = 0;
     public PuzzleTile puzzleTilePrefab;
 
+    private int solvedTimes = 0;
+
     // Singleton instance
     private static SlidePuzzleController _instance;
     public static SlidePuzzleController Instance
@@ -95,6 +97,22 @@ public class SlidePuzzleController : MonoBehaviour
        {
         PrintTileOrder();
        }
+       
+       if (Input.GetMouseButtonDown(0)){
+            if (IsPuzzleSolved()){
+
+                if (solvedTimes >= 1)
+                {
+                    StateNameController.Next();
+                }
+                else
+                {
+                    RestartPuzzle(puzzleNumber+1, gridSize+1);
+                }
+            }
+       }
+
+       
     }
 
     private void ShuffleList<T>(List<T> list)
@@ -139,6 +157,7 @@ public class SlidePuzzleController : MonoBehaviour
     public void TileClicked(int clickedId){
         
         if (IsPuzzleSolved()){
+
             return;
         }
 
@@ -164,7 +183,6 @@ public class SlidePuzzleController : MonoBehaviour
             if (IsPuzzleSolved())
             {
                 tiles[tiles.Count - 1].tileImage.enabled = true;
-                Debug.Log("PUZZLE SOLVED");
             }
         }
     }
@@ -238,5 +256,22 @@ public class SlidePuzzleController : MonoBehaviour
     public void GoBack()
     {
         SceneManager.LoadSceneAsync("Map");
+    }
+
+    public void RestartPuzzle(int newPuzzleNumber, int newGridSize)
+    {
+        // Clear existing tiles
+        foreach (PuzzleTile tile in tiles)
+        {
+            Destroy(tile.gameObject);
+        }
+
+        // Set new puzzle number and grid size
+        puzzleNumber = newPuzzleNumber;
+        gridSize = newGridSize;
+        solvedTimes = solvedTimes+1;
+
+        // Reinitialize puzzle with new settings
+        Start();
     }
 }

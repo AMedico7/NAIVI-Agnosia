@@ -102,8 +102,8 @@ public class PuzzleTile : MonoBehaviour
 
     void Update()
     {
-        // Toggle text
-        if (Input.GetKeyDown(KeyCode.T))
+        // Toggle text / Numbers
+        if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.N))
         {
             SetTextVisibility(!tileText.gameObject.activeSelf);
         }
