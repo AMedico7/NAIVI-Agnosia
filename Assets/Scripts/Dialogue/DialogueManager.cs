@@ -8,7 +8,9 @@ public class DialogueManager : MonoBehaviour
 {
 
     public GameObject dialogueBox;
-    public GameObject background;
+
+
+    public Canvas canvas;
     private Dialogue dialogue;
     private Image backgroundImage;
 
@@ -28,7 +30,7 @@ public class DialogueManager : MonoBehaviour
         instance = this;   
         // Set dialogue and dialogue lines
         dialogue = dialogueBox.GetComponent<Dialogue>();
-        backgroundImage = background.GetComponent<Image>();
+        backgroundImage = canvas.GetComponent<Image>();
 
         backgroundImage.sprite = backgrounds[StateNameController.location];
         SetDialogueLines(StateNameController.lines);
