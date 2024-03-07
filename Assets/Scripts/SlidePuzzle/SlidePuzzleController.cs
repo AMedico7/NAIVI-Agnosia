@@ -136,7 +136,7 @@ public class SlidePuzzleController : MonoBehaviour
                 break;
             case 4:
                 // Fix order
-                order = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 13, 14, 15, 12};
+                order = new int[] {9, 14, 15, 12, 4, 3, 13, 6, 5, 16, 7, 8, 10, 2, 1, 11};
                 break;
             case 5:
                 order = new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,24};
