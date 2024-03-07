@@ -10,38 +10,43 @@ public class StateNameController : MonoBehaviour
         "Dr. P: ¡Hola!", 
         "Señora P: Buenos días, cariño.", 
         "Dr. P: Hoy va a ser un día estupendo.", 
-        "Señora P: Recuerda que tienes cita con el doctor Sacks.", 
-        "Dr. P: Cierto, mejor que vaya con tiempo, no vaya a ser que tenga algún percance."
+        "Dr. P: Mi día a día es como un rompecabezas, me pregunto que imagen esconde detrás."
     };
 
     private static string[] dialogueAfterLocation0 = {
-        "Dr. P: Ya falta menos para llegar a la clínica. ¡Casi me pierdo!"
+        "Señora P: Recuerda que tienes cita con el doctor Sacks.", 
+        "Dr. P: Cierto, mejor que vaya con tiempo, no vaya a ser que tenga algún percance.",
+        "Dr. P: Siguiendo las flechas al ritmo de la música seguro que llego a tiempo."
     };
 
     private static string[] dialogueBeforeLocation1 = {
+        "Dr. P: Ya falta menos para llegar a la clínica. ¡Casi me pierdo!",
         "Dr. P: El doctor Sacks es un hombre muy inteligente, me encanta charlar con él.", 
         "Dr. Sacks: Buenas Dr. P, adelante.", 
-        "Dr. P: Buenos días doctor Sacks."
+        "Dr. P: Buenos días doctor Sacks.",
+        "Dr. P: Espero que hoy pueda seguir todas las preguntas de Sacks, intentaré conectar todas las ideas."
     };
 
     private static string[] dialogueAfterLocation1 = {
         "Dr. P: Un placer como siempre doctor Sacks.", 
         "Dr. Sacks: El placer es mío, cuídese.", 
-        "Dr. P: Ahora rumbo a la escuela."
+        "Dr. P: Ahora rumbo a la escuela.",
+        "Dr. P: Espero que la combinación de flechas y música me guie igual de bien que antes."
     };
 
     private static string[] dialogueBeforeLocation2 = {
-        "Dr. P: La escuela está a la vuelta de la esquina, o eso creo yo..."
+        "Dr. P: La escuela está a la vuelta de la esquina, o eso creo yo...",
+        "Alumno: Buenos días Dr. P.",
+        "Dr. P: Da gusto dar clase con alumnos así, aunque cada año me cuesta más quedarme con sus caras."
     };
 
     private static string[] dialogueAfterLocation2 = {
         "Alumno: ¡Adiós Dr. P nos vemos el jueves!", 
         "Dr. P: ¡Adiós chicos!", 
-        "Dr. P: Da gusto dar clase a alumnos así, aunque cada año me cuesta más quedarme con sus caras."
+        "Dr. P: Me encanta mi trabajo, no lo cambiaria por nada."
     };
 
     private static string[] dialogueBeforeEnding = {
-        ""
     };
 
     public static int step = 0;
